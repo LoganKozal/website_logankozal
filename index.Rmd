@@ -1,5 +1,5 @@
 ---
-title: "Welcome!"
+title: "Logan Kozal"
 image: "logan_gaviota.jpg"
 color1: "#5A59A3"
 color2: "#C66060"
