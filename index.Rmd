@@ -5,8 +5,8 @@ color1: "#5A59A3"
 color2: "#C66060"
 angle: 130
 links:
-  - label: YouTube
-    url: "https://youtube.com/"
+  - label: CV
+    url: "https://drive.google.com/file/d/1rqzi5vMP2AX0SvnC-D0zmnYj6ZL6ChpG/view?usp=sharing"
   - label: ORCID id
     url: "https://orcid.org/0000-0002-2119-2721"
   - label: Github
