@@ -1,10 +1,16 @@
 ---
-title: "About this site"
+title: "About Me"
 description: |
-  Some additional details about the website
+  I love science, art, being outside, and my dog Boogie.
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+  I am a 5th year PhD candidate in the Hofmann Lab at UC Santa Barbara in the department of Ecology, Evolution, and Marine Biology. I study the capacity of ecologically and commercially important marine invertebrate species to cope with the environmental stress associated with climate change and ocean acidification. I investigate the physiological mechanisms by which organisms can rapidly adapt to environmental stressors in the hopes of forecasting which organisms will be resilient to the stress of a changing ocean. I am also interested in the environmental variablity that modulates these stressors. 
+  In California, I am interested in how upwelling and kelp forests influence heterogeneity in pH and oxygen across space and time in the Santa Barbara Channel and how organisms such as the purple sea urchin *Strongylocentrotus purpuratus* cope with these chemical changes. I focus on the role of transgenerational plasticity by looking at the role of maternal provisioning and epigenetic inheritance as potential avenues for resilience in early life stages of purple urchins. In New Zealand, I study thermal variation in the Marlborough Sounds, where most of the NZ's mussel farms are located. This area has suffered devastating marine heatwaves in the last few summers. My work investigates whether mussel hatcheries can manipulate the thermal environment of broodstock to leverage transgenerational effects to bolster mussel thermal tolerance in the face of these heatwaves. You can watch the video below to learn more! 
+  
+  ![](/mp4/Logan_Kozal_2021GradSlam.mp4)
+
+  
