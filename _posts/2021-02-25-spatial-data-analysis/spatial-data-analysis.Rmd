@@ -1,0 +1,89 @@
+---
+title: "spatial data analysis"
+description: |
+   This is a project looking at oil spills by county in California.
+author:
+  - name: Logan Kozal
+    url: {}
+date: 2021-02-25
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: hide
+---
+
+## The data
+
+This data is from the Oil Spill Incident Tracking [ds394], published 07/23/2009 from the California Department of Fish and Game, Office of Spill Prevention and Response. Data accessible here: https://map.dfg.ca.gov/metadata/ds0394.html#ID0EUGA 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(janitor)
+library(tidyverse)
+library(here)
+library(sf)
+library(tmap)
+```
+
+## Preliminary view of oil spill locations
+```{r, results = "hide"}
+# Read in the oil spill data
+spills <- read_sf(dsn = here::here("_posts", "2021-02-25-spatial-data-analysis","data","oil_spills"), layer ="Oil_Spill_Incident_Tracking_%5Bds394%5D") %>% 
+  st_transform(crs = 4326) %>%  # Update CRS
+  clean_names()
+
+st_crs(spills) # Check CRS
+
+# Get CA counties
+counties <- read_sf(dsn = here("_posts", "2021-02-25-spatial-data-analysis","data", "ca_counties"), 
+                    layer = "CA_Counties_TIGER2016") %>% 
+    st_transform(crs = 4326) %>% 
+  clean_names() %>% 
+  dplyr::select(name)
+
+st_crs(counties) # Check CRS
+
+```
+```{r}
+# plot them together
+ggplot() +
+  geom_sf(data = counties,
+          color = "black",
+          fill = "cyan4",
+          size = 0.5) +
+  geom_sf(data = spills,
+          color = "orange",
+          alpha = 0.5,
+          size = 2) +
+  theme_minimal()
+```
+
+
+## Interactive Map of Oil Spill Locations
+
+```{r}
+tmap_mode("view")
+
+tm_shape(spills)+
+  tm_dots("inlandmari", title = "Spill Type")+
+  tm_layout(main.title = "California Oil Spills")
+```
+## Oil Spills per County in California
+```{r}
+ca_spills <- counties %>% 
+  st_join(spills)
+
+#find counts by county 
+spill_counts <- ca_spills %>% 
+  count(name)
+
+# plot a chloropleth using the number of spills as fill color 
+
+ggplot(data = spill_counts) +
+  geom_sf(aes(fill = n), color = "grey", size = 0.1) +
+  scale_fill_gradient(  low = "#FEF9E7",
+  high = "#78281F") +
+  theme_minimal() +
+  labs(fill = "Number of Oil Spills", title = "Total Oil Spills per CA County")
+```
+
